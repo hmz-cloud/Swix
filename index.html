@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandWix - Mix Food Fix Mood | الخبر</title>
+    <meta name="description" content="SandWix Restaurant in Khobar - Mix Food Fix Mood. Serving delicious sandwiches, burgers, wraps, and quick bites. مطعم ساندوکس في الخبر - ألذ الساندويتشات والبرجر.">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --brand-orange: #ff6600;
+            --brand-orange-dark: #e65c00;
+            --brand-orange-light: #fff3e6;
+            --dark: #0a0a0a;
+            --dark-card: #141414;
+            --whatsapp: #25d366;
+            --whatsapp-dark: #1da851;
+            --gold: #f59e0b;
+            --surface: #1a1a1a;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-orange: rgba(255, 102, 0, 0.25);
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .lang-ar {
+            direction: rtl;
+            text-align: right;
+        }
+        .lang-en {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Brand gradient background */
+        .brand-gradient {
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, #1c0f04 0%, #0a0a0a 55%, #0a0a0a 100%);
+        }
+
+        /* Orange glow utility */
+        .orange-glow {
+            box-shadow: 0 8px 40px -12px rgba(255, 102, 0, 0.45);
+        }
+        .orange-glow-sm {
+            box-shadow: 0 4px 16px -6px rgba(255, 102, 0, 0.35);
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 28px 50px -12px rgba(255, 102, 0, 0.18);
+            border-color: rgba(255, 102, 0, 0.5);
+        }
+
+        /* Pulse ring for Order Now buttons */
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+            }
+            70% {
+                box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        .pulse-whatsapp {
+            animation: pulse-ring 2.2s infinite;
+        }
+
+        /* Shimmer for special cards */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+        .shimmer-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-border::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: linear-gradient(120deg,
+                    transparent 25%,
+                    rgba(255, 102, 0, 0.5) 45%,
+                    rgba(255, 140, 50, 0.7) 50%,
+                    rgba(255, 102, 0, 0.5) 55%,
+                    transparent 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* WhatsApp float button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 50;
+            background: #25d366;
+            color: #fff;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.12) rotate(8deg);
+            color: #fff;
+            box-shadow: 0 14px 36px rgba(37, 211, 102, 0.7);
+            background: #20bd5a;
+        }
+        .whatsapp-float .tooltip-text {
+            position: absolute;
+            right: 72px;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            border: 1px solid rgba(37, 211, 102, 0.4);
+            letter-spacing: 0.3px;
+        }
+        .whatsapp-float:hover .tooltip-text {
+            opacity: 1;
+        }
+        .lang-ar .whatsapp-float {
+            right: auto;
+            left: 28px;
+        }
+        .lang-ar .whatsapp-float .tooltip-text {
+            right: auto;
+            left: 72px;
+        }
+
+        /* Menu tab active state */
+        .menu-tab.active {
+            background: #ff6600;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+            border-color: transparent;
+        }
+
+        /* Image hover zoom */
+        .img-zoom {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-zoom:hover {
+            transform: scale(1.08);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff6600;
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 102, 0, 0.25) 20%,
+                    rgba(255, 102, 0, 0.5) 50%,
+                    rgba(255, 102, 0, 0.25) 80%,
+                    transparent 100%);
+        }
+
+        /* Badge pulse */
+        @keyframes badge-pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        .badge-live {
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 640px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 16px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            .whatsapp-float .tooltip-text {
+                display: none;
+            }
+            .lang-ar .whatsapp-float {
+                right: auto;
+                left: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-zinc-200 lang-en selection:bg-orange-500 selection:text-white">
+
+    <!-- ============ WHATSAPP FLOAT ============ -->
+    <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20place%20an%20order." target="_blank"
+    class="whatsapp-float pulse-whatsapp" aria-label="Order Now on WhatsApp">
+    <span class="tooltip-text">Order Now</span>
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ============ HEADER ============ -->
+<header class="bg-[#0d0d0d]/95 backdrop-blur-xl text-white sticky top-0 z-40 border-b border-orange-500/15 shadow-2xl">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-[3px] flex items-center justify-center shadow-lg shadow-orange-500/25 overflow-hidden border border-orange-400/40">
+                <img src="sandwix_2.webp" alt="SandWix Logo" class="w-full h-full object-contain rounded-xl bg-white">
+            </div>
+            <div>
+                <h1 class="text-xl md:text-2xl font-black tracking-tight text-white flex items-center gap-1">
+                    Sand<span class="text-orange-500">Wix</span>
+                </h1>
+                <p class="text-[10px] text-orange-400 font-semibold tracking-[0.15em] uppercase" data-lang-key="tagline">Mix Food Fix Mood</p>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8 font-medium text-sm" id="desktop-nav">
+            <a href="#about" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-about">About</a>
+            <a href="#menu" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-menu">Menu</a>
+            <a href="#gallery" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-gallery">Gallery</a>
+            <a href="#location" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-contact">Find Us</a>
+            <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order."
+            class="bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-md shadow-green-500/25 flex items-center gap-2 cursor-pointer">
+            <i class="fab fa-whatsapp"></i> <span data-lang-key="nav-order">Order Now</span>
+        </a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+        <button id="lang-toggle-btn"
+        class="bg-zinc-800/80 hover:bg-zinc-700 text-orange-400 hover:text-orange-300 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 border border-orange-500/25 transition-all shadow-sm cursor-pointer"
+        aria-label="Toggle language">
+        <span id="lang-label">عربي</span>
+        <i class="fas fa-globe text-xs"></i>
+    </button>
+    <button id="mobile-menu-btn"
+    class="md:hidden text-zinc-300 hover:text-orange-500 text-2xl p-1 transition-colors cursor-pointer"
+    aria-label="Menu">
+    <i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-[#0d0d0d] border-t border-zinc-800/80 px-6 py-5 shadow-2xl">
+    <nav class="flex flex-col gap-4 text-base font-medium" id="mobile-nav">
+        <a href="#about" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-about">About</a>
+        <a href="#menu" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-menu">Menu</a>
+        <a href="#gallery" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-gallery">Gallery</a>
+        <a href="#location" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-contact">Find Us</a>
+        <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order."
+        class="bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full font-bold text-sm transition-all shadow-md shadow-green-500/25 flex items-center justify-center gap-2 mt-2 cursor-pointer">
+        <i class="fab fa-whatsapp"></i> <span data-lang-key="nav-order">Order Now</span>
+    </a>
+</nav>
+</div>
+</header>
+
+<!-- ============ MAIN CONTENT ============ -->
+<main>
+    <!-- HERO SECTION -->
+    <section class="brand-gradient text-white pt-16 pb-24 md:pt-28 md:pb-36 relative overflow-hidden border-b border-orange-500/10">
+        <!-- Floating food emojis -->
+        <div class="absolute inset-0 opacity-8 pointer-events-none select-none">
+            <div class="absolute top-12 left-8 text-7xl md:text-8xl animate-bounce" style="animation-duration: 4s;">🥪</div>
+            <div class="absolute bottom-14 right-10 text-7xl md:text-8xl animate-bounce" style="animation-duration: 5s; animation-delay: 0.5s;">🍔</div>
+            <div class="absolute top-1/3 right-[15%] text-6xl animate-pulse" style="animation-duration: 3s;">🍟</div>
+            <div class="absolute bottom-1/4 left-[12%] text-5xl animate-pulse" style="animation-duration: 3.5s; animation-delay: 1s;">🥤</div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] opacity-[0.03]">🔥</div>
+        </div>
+
+        <div class="container mx-auto px-4 text-center relative z-10 max-w-4xl">
+            <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-400 border border-orange-500/25 px-5 py-2.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase shadow-lg shadow-orange-500/8 badge-live">
+                <span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span>
+                <span data-lang-key="hero-badge">Khobar's Favorite Spot</span>
+            </span>
+            <h2 class="text-4xl sm:text-6xl lg:text-7xl font-black mb-6 tracking-tight leading-[1.05]">
+                Mix Food <span class="text-orange-500 drop-shadow-[0_0_30px_rgba(255,102,0,0.5)]">Fix Mood</span>
+            </h2>
+            <p class="text-base sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
+            data-lang-key="hero-sub">
+            Crafting mouth-watering gourmet sandwiches, smashed burgers, and signature wraps with passion right here in Al Khobar.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <!-- PRIMARY: Order Now on WhatsApp -->
+            <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order."
+            class="bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-2xl text-base md:text-lg transition-all shadow-xl shadow-green-500/30 hover:shadow-green-500/50 inline-flex items-center gap-3 group cursor-pointer pulse-whatsapp">
+            <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
+            <span data-lang-key="btn-order-now">Order Now</span>
+        </a>
+        <!-- SECONDARY: View Menu -->
+        <a href="#menu"
+        class="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700 hover:border-orange-500/50 text-white font-bold px-8 py-4 rounded-2xl text-base md:text-lg transition-all inline-flex items-center gap-3 backdrop-blur-sm">
+        <i class="fas fa-utensils text-orange-500"></i>
+        <span data-lang-key="btn-menu">View Menu</span>
+    </a>
+</div>
+</div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="bg-[#111] border-y border-zinc-800/60 py-7 relative z-20">
+    <div class="container mx-auto px-4 max-w-5xl">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" id="stats-grid">
+            <div class="p-4">
+                <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">50+</div>
+                <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-items">Menu Items</p>
+            </div>
+            <div class="p-4">
+                <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">4.7</div>
+                <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-rating">Google Rating</p>
+            </div>
+            <div class="p-4">
+                <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">2K+</div>
+                <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-customers">Happy Customers</p>
+            </div>
+            <div class="p-4">
+                <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">24/7</div>
+                <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-service">Fast Service</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="py-20 md:py-32 bg-[#0a0a0a] relative" id="about">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+                <span class="text-orange-500 font-bold tracking-wider text-sm uppercase block mb-3 flex items-center gap-2">
+                    <i class="fas fa-fire"></i> <span data-lang-key="about-tag">Welcome to SandWix</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight" data-lang-key="about-title">
+                    Where Every Bite Fixes Your Mood
+                </h2>
+                <p class="text-zinc-400 leading-relaxed mb-6 text-base md:text-lg font-light" data-lang-key="about-desc1">
+                    SandWix is more than just a sandwich shop — it's an experience built on fresh ingredients, bold house-made sauces, and artisan breads baked to golden perfection.
+                </p>
+                <p class="text-zinc-400 leading-relaxed mb-8 text-base md:text-lg font-light" data-lang-key="about-desc2">
+                    Located conveniently in Al Khobar, we serve up high-energy vibes and unforgettable flavor combinations that keep our community coming back for more.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="flex items-center gap-3 bg-[#141414] px-5 py-3 rounded-2xl border border-zinc-800">
+                        <i class="fas fa-check-circle text-orange-500 text-lg"></i>
+                        <span class="font-bold text-sm text-zinc-200" data-lang-key="feat-1">100% Fresh Ingredients</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-[#141414] px-5 py-3 rounded-2xl border border-zinc-800">
+                        <i class="fas fa-check-circle text-orange-500 text-lg"></i>
+                        <span class="font-bold text-sm text-zinc-200" data-lang-key="feat-2">Signature Sauces</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-orange-500/20 aspect-[4/3] relative group shimmer-border">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+                    <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80"
+                    alt="Gourmet Sandwich" loading="lazy"
+                    class="w-full h-full object-cover img-zoom">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-[#141414] text-white p-6 rounded-3xl shadow-2xl border border-orange-500/25 hidden sm:flex items-center gap-4 z-20">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500/15 text-orange-500 flex items-center justify-center text-2xl font-black">
+                        ★
+                    </div>
+                    <div>
+                        <p class="text-2xl font-black text-white">4.7 / 5.0</p>
+                        <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="rating-label">Google Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MENU SECTION -->
+<section class="py-20 md:py-32 bg-[#0d0d0d] border-t border-zinc-800/60" id="menu">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="text-center max-w-xl mx-auto mb-16">
+            <span class="text-orange-500 font-bo
