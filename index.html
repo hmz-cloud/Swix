@@ -1,411 +1,568 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <base target="_self">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SandWix - Mix Food Fix Mood | الخبر</title>
-    <meta name="description" content="SandWix Restaurant in Khobar - Mix Food Fix Mood. Serving delicious sandwiches, burgers, wraps, and quick bites. مطعم ساندوکس في الخبر - ألذ الساندويتشات والبرجر.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --brand-orange: #ff6600;
-            --brand-orange-dark: #e65c00;
-            --brand-orange-light: #fff3e6;
-            --dark: #0a0a0a;
-            --dark-card: #141414;
-            --whatsapp: #25d366;
-            --whatsapp-dark: #1da851;
-            --gold: #f59e0b;
-            --surface: #1a1a1a;
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --border-orange: rgba(255, 102, 0, 0.25);
-        }
-
-        * {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #0a0a0a;
-            color: #e5e5e5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .lang-ar {
-            direction: rtl;
-            text-align: right;
-        }
-        .lang-en {
-            direction: ltr;
-            text-align: left;
-        }
-
-        /* Brand gradient background */
-        .brand-gradient {
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, #1c0f04 0%, #0a0a0a 55%, #0a0a0a 100%);
-        }
-
-        /* Orange glow utility */
-        .orange-glow {
-            box-shadow: 0 8px 40px -12px rgba(255, 102, 0, 0.45);
-        }
-        .orange-glow-sm {
-            box-shadow: 0 4px 16px -6px rgba(255, 102, 0, 0.35);
-        }
-
-        /* Card hover effect */
-        .card-hover {
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 28px 50px -12px rgba(255, 102, 0, 0.18);
-            border-color: rgba(255, 102, 0, 0.5);
-        }
-
-        /* Pulse ring for Order Now buttons */
-        @keyframes pulse-ring {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>SandWix — Mix Food Fix Mood | الخبر</title>
+  <meta name="description" content="SandWix in Al Khobar — gourmet sandwiches, smashed burgers & signature wraps. Fresh ingredients, bold house sauces. Order on WhatsApp. مطعم ساندوکس في الخبر." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              400: '#fb923c',
+              500: '#ff6600',
+              600: '#ea580c',
+              700: '#c2410c',
+            },
+            surface: {
+              DEFAULT: '#0a0a0a',
+              50: '#141414',
+              100: '#1a1a1a',
+              200: '#222222',
             }
-            70% {
-                box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+          },
+          fontFamily: {
+            sans: ['Tajawal', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow': '0 8px 40px -12px rgba(255, 102, 0, 0.45)',
+            'glow-sm': '0 4px 16px -6px rgba(255, 102, 0, 0.35)',
+            'wa': '0 8px 28px rgba(37, 211, 102, 0.5)',
+          }
         }
-        .pulse-whatsapp {
-            animation: pulse-ring 2.2s infinite;
-        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --brand: #ff6600;
+      --wa: #25d366;
+    }
+    body {
+      font-family: 'Tajawal', system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #e5e5e5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .lang-ar { direction: rtl; text-align: right; }
+    .lang-en { direction: ltr; text-align: left; }
 
-        /* Shimmer for special cards */
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-        .shimmer-border {
-            position: relative;
-            overflow: hidden;
-        }
-        .shimmer-border::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1.5px;
-            background: linear-gradient(120deg,
-                    transparent 25%,
-                    rgba(255, 102, 0, 0.5) 45%,
-                    rgba(255, 140, 50, 0.7) 50%,
-                    rgba(255, 102, 0, 0.5) 55%,
-                    transparent 75%);
-            background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
+    .hero-glow {
+      background: radial-gradient(ellipse 90% 70% at 50% -10%, #1c0f04 0%, #0a0a0a 55%);
+    }
 
-        /* WhatsApp float button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 50;
-            background: #25d366;
-            color: #fff;
-            width: 62px;
-            height: 62px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.12) rotate(8deg);
-            color: #fff;
-            box-shadow: 0 14px 36px rgba(37, 211, 102, 0.7);
-            background: #20bd5a;
-        }
-        .whatsapp-float .tooltip-text {
-            position: absolute;
-            right: 72px;
-            background: #1a1a1a;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            border: 1px solid rgba(37, 211, 102, 0.4);
-            letter-spacing: 0.3px;
-        }
-        .whatsapp-float:hover .tooltip-text {
-            opacity: 1;
-        }
-        .lang-ar .whatsapp-float {
-            right: auto;
-            left: 28px;
-        }
-        .lang-ar .whatsapp-float .tooltip-text {
-            right: auto;
-            left: 72px;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+    .float-a { animation: float 5s ease-in-out infinite; }
+    .float-b { animation: float 6.5s ease-in-out infinite 0.8s; }
+    .float-c { animation: float 4.5s ease-in-out infinite 1.4s; }
 
-        /* Menu tab active state */
-        .menu-tab.active {
-            background: #ff6600;
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
-            border-color: transparent;
-        }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+      70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .pulse-wa { animation: pulse-ring 2.2s infinite; }
 
-        /* Image hover zoom */
-        .img-zoom {
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .img-zoom:hover {
-            transform: scale(1.08);
-        }
+    .card-lift {
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px -12px rgba(255, 102, 0, 0.18);
+      border-color: rgba(255, 102, 0, 0.45);
+    }
 
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff6600;
-        }
+    .menu-tab {
+      transition: all 0.25s ease;
+    }
+    .menu-tab.active {
+      background: #ff6600;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+      border-color: transparent;
+    }
 
-        /* Section divider */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    rgba(255, 102, 0, 0.25) 20%,
-                    rgba(255, 102, 0, 0.5) 50%,
-                    rgba(255, 102, 0, 0.25) 80%,
-                    transparent 100%);
-        }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #ff6600;
+      outline-offset: 3px;
+    }
 
-        /* Badge pulse */
-        @keyframes badge-pulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
-        .badge-live {
-            animation: badge-pulse 2s ease-in-out infinite;
-        }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,102,0,0.35), transparent);
+    }
 
-        @media (max-width: 640px) {
-            .whatsapp-float {
-                bottom: 20px;
-                right: 16px;
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-            .whatsapp-float .tooltip-text {
-                display: none;
-            }
-            .lang-ar .whatsapp-float {
-                right: auto;
-                left: 16px;
-            }
-        }
-    </style>
+    #mobile-menu {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    #mobile-menu.hidden-menu {
+      transform: translateY(-12px);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ff6600; }
+
+    @media (max-width: 480px) {
+      .float-food { display: none; }
+    }
+  </style>
 </head>
-<body class="bg-[#0a0a0a] text-zinc-200 lang-en selection:bg-orange-500 selection:text-white">
+<body class="bg-surface text-zinc-200 lang-en selection:bg-brand-500 selection:text-white">
 
-    <!-- ============ WHATSAPP FLOAT ============ -->
-    <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20place%20an%20order." target="_blank"
-       class="whatsapp-float pulse-whatsapp" aria-label="Order Now on WhatsApp">
-        <span class="tooltip-text">Order Now</span>
-        <i class="fab fa-whatsapp"></i>
-    </a>
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order."
+     target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-6 right-5 z-50 w-14 h-14 md:w-[62px] md:h-[62px] rounded-full bg-[#25d366] text-white flex items-center justify-center text-2xl md:text-[30px] shadow-wa pulse-wa hover:scale-110 hover:rotate-6 transition-transform duration-300"
+     aria-label="Order on WhatsApp">
+    <svg class="w-7 h-7 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
 
-    <!-- ============ HEADER ============ -->
-    <header class="bg-[#0d0d0d]/95 backdrop-blur-xl text-white sticky top-0 z-40 border-b border-orange-500/15 shadow-2xl">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-[3px] flex items-center justify-center shadow-lg shadow-orange-500/25 overflow-hidden border border-orange-400/40">
-                    <img src="sandwix_2.webp" alt="SandWix Logo" class="w-full h-full object-contain rounded-xl bg-white">
-                </div>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-black tracking-tight text-white flex items-center gap-1">
-                        Sand<span class="text-orange-500">Wix</span>
-                    </h1>
-                    <p class="text-[10px] text-orange-400 font-semibold tracking-[0.15em] uppercase" data-lang-key="tagline">Mix Food Fix Mood</p>
-                </div>
-            </div>
-            
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm" id="desktop-nav">
-                <a href="#about" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-about">About</a>
-                <a href="#menu" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-menu">Menu</a>
-                <a href="#gallery" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-gallery">Gallery</a>
-                <a href="#location" class="hover:text-orange-400 transition-colors text-zinc-300" data-lang-key="nav-contact">Find Us</a>
-                <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order." 
-                   class="bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-md shadow-green-500/25 flex items-center gap-2 cursor-pointer">
-                    <i class="fab fa-whatsapp"></i> <span data-lang-key="nav-order">Order Now</span>
-                </a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <button id="lang-toggle-btn"
-                        class="bg-zinc-800/80 hover:bg-zinc-700 text-orange-400 hover:text-orange-300 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 border border-orange-500/25 transition-all shadow-sm cursor-pointer"
-                        aria-label="Toggle language">
-                    <span id="lang-label">عربي</span>
-                    <i class="fas fa-globe text-xs"></i>
-                </button>
-                <button id="mobile-menu-btn"
-                        class="md:hidden text-zinc-300 hover:text-orange-500 text-2xl p-1 transition-colors cursor-pointer"
-                        aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-[#0d0d0d]/90 backdrop-blur-xl border-b border-orange-500/15">
+    <div class="max-w-6xl mx-auto px-4 h-16 md:h-[72px] flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group" aria-label="SandWix home">
+        <div class="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-[2.5px] shadow-glow-sm flex items-center justify-center overflow-hidden">
+          <div class="w-full h-full rounded-[14px] bg-white flex items-center justify-center text-brand-600 font-black text-lg">S</div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#0d0d0d] border-t border-zinc-800/80 px-6 py-5 shadow-2xl">
-            <nav class="flex flex-col gap-4 text-base font-medium" id="mobile-nav">
-                <a href="#about" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-about">About</a>
-                <a href="#menu" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-menu">Menu</a>
-                <a href="#gallery" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-gallery">Gallery</a>
-                <a href="#location" class="hover:text-orange-400 transition-colors py-1" data-lang-key="nav-contact">Find Us</a>
-                <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order." 
-                   class="bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full font-bold text-sm transition-all shadow-md shadow-green-500/25 flex items-center justify-center gap-2 mt-2 cursor-pointer">
-                    <i class="fab fa-whatsapp"></i> <span data-lang-key="nav-order">Order Now</span>
-                </a>
-            </nav>
+        <div>
+          <div class="text-lg md:text-xl font-black tracking-tight text-white leading-none">
+            Sand<span class="text-brand-500">Wix</span>
+          </div>
+          <div class="text-[10px] text-brand-400 font-semibold tracking-[0.12em] uppercase mt-0.5" data-i18n="tagline">Mix Food Fix Mood</div>
         </div>
-    </header>
+      </a>
 
-    <!-- ============ MAIN CONTENT ============ -->
-    <main>
-        <!-- HERO SECTION -->
-        <section class="brand-gradient text-white pt-16 pb-24 md:pt-28 md:pb-36 relative overflow-hidden border-b border-orange-500/10">
-            <!-- Floating food emojis -->
-            <div class="absolute inset-0 opacity-8 pointer-events-none select-none">
-                <div class="absolute top-12 left-8 text-7xl md:text-8xl animate-bounce" style="animation-duration: 4s;">🥪</div>
-                <div class="absolute bottom-14 right-10 text-7xl md:text-8xl animate-bounce" style="animation-duration: 5s; animation-delay: 0.5s;">🍔</div>
-                <div class="absolute top-1/3 right-[15%] text-6xl animate-pulse" style="animation-duration: 3s;">🍟</div>
-                <div class="absolute bottom-1/4 left-[12%] text-5xl animate-pulse" style="animation-duration: 3.5s; animation-delay: 1s;">🥤</div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] opacity-[0.03]">🔥</div>
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main">
+        <a href="#menu" class="px-4 py-2 rounded-full text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition" data-i18n="nav-menu">Menu</a>
+        <a href="#about" class="px-4 py-2 rounded-full text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition" data-i18n="nav-about">About</a>
+        <a href="#gallery" class="px-4 py-2 rounded-full text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition" data-i18n="nav-gallery">Gallery</a>
+        <a href="#findus" class="px-4 py-2 rounded-full text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition" data-i18n="nav-find">Find Us</a>
+        <a href="https://wa.me/966500000000?text=Hello%20SandWix!" target="_blank" rel="noopener"
+           class="ml-2 inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-glow-sm transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="nav-order">Order Now</span>
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="lang-toggle" type="button"
+                class="px-3 py-1.5 rounded-full border border-zinc-700 text-xs font-bold text-zinc-300 hover:border-brand-500 hover:text-brand-400 transition"
+                aria-label="Switch language">
+          <span id="lang-label">عربي</span>
+        </button>
+        <button id="menu-btn" type="button"
+                class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-700 text-zinc-300 hover:border-brand-500"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden-menu absolute inset-x-0 top-full bg-[#0d0d0d]/98 backdrop-blur-xl border-b border-orange-500/15 px-4 py-4 space-y-1">
+      <a href="#menu" class="block px-4 py-3 rounded-xl text-zinc-200 font-medium hover:bg-white/5" data-i18n="nav-menu">Menu</a>
+      <a href="#about" class="block px-4 py-3 rounded-xl text-zinc-200 font-medium hover:bg-white/5" data-i18n="nav-about">About</a>
+      <a href="#gallery" class="block px-4 py-3 rounded-xl text-zinc-200 font-medium hover:bg-white/5" data-i18n="nav-gallery">Gallery</a>
+      <a href="#findus" class="block px-4 py-3 rounded-xl text-zinc-200 font-medium hover:bg-white/5" data-i18n="nav-find">Find Us</a>
+      <a href="https://wa.me/966500000000?text=Hello%20SandWix!" target="_blank" rel="noopener"
+         class="mt-2 flex items-center justify-center gap-2 bg-brand-500 text-white font-bold py-3.5 rounded-xl">
+        <span data-i18n="nav-order">Order Now</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-glow relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
+    <div class="float-food absolute top-24 left-[6%] text-5xl opacity-40 float-a pointer-events-none select-none" aria-hidden="true">🥪</div>
+    <div class="float-food absolute top-40 right-[8%] text-4xl opacity-35 float-b pointer-events-none select-none" aria-hidden="true">🍟</div>
+    <div class="float-food absolute bottom-28 left-[12%] text-4xl opacity-30 float-c pointer-events-none select-none" aria-hidden="true">🥤</div>
+    <div class="float-food absolute bottom-20 right-[14%] text-5xl opacity-35 float-a pointer-events-none select-none" aria-hidden="true">🍔</div>
+
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/25 text-brand-400 text-xs font-bold tracking-wide mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+        <span data-i18n="hero-badge">Khobar’s Favorite Spot</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-5">
+        <span data-i18n="hero-title-1">Mix Food</span>
+        <span class="text-brand-500" data-i18n="hero-title-2">Fix Mood</span>
+      </h1>
+
+      <p class="text-zinc-400 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed font-light" data-i18n="hero-sub">
+        Crafting mouth-watering gourmet sandwiches, smashed burgers, and signature wraps with passion right here in Al Khobar.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order."
+           target="_blank" rel="noopener"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25d366] hover:bg-[#20bd5a] text-white font-bold text-base px-8 py-3.5 rounded-full shadow-wa transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="cta-order">Order Now</span>
+        </a>
+        <a href="#menu"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-surface-50 hover:bg-surface-100 border border-zinc-700 hover:border-brand-500/50 text-white font-bold text-base px-8 py-3.5 rounded-full transition">
+          <span data-i18n="cta-menu">View Menu</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 mt-14 md:mt-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="text-center p-4 rounded-2xl bg-surface-50/60 border border-zinc-800/80">
+          <div class="text-2xl md:text-3xl font-black text-brand-500">50+</div>
+          <div class="text-xs md:text-sm text-zinc-500 font-medium mt-1" data-i18n="stat-menu">Menu Items</div>
+        </div>
+        <div class="text-center p-4 rounded-2xl bg-surface-50/60 border border-zinc-800/80">
+          <div class="text-2xl md:text-3xl font-black text-brand-500">4.7</div>
+          <div class="text-xs md:text-sm text-zinc-500 font-medium mt-1" data-i18n="stat-rating">Google Rating</div>
+        </div>
+        <div class="text-center p-4 rounded-2xl bg-surface-50/60 border border-zinc-800/80">
+          <div class="text-2xl md:text-3xl font-black text-brand-500">2K+</div>
+          <div class="text-xs md:text-sm text-zinc-500 font-medium mt-1" data-i18n="stat-customers">Happy Customers</div>
+        </div>
+        <div class="text-center p-4 rounded-2xl bg-surface-50/60 border border-zinc-800/80">
+          <div class="text-2xl md:text-3xl font-black text-brand-500">24/7</div>
+          <div class="text-xs md:text-sm text-zinc-500 font-medium mt-1" data-i18n="stat-service">Fast Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- MENU -->
+  <section id="menu" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10 md:mb-14">
+        <span class="text-brand-500 font-bold text-sm tracking-wider uppercase" data-i18n="menu-tag">Our Menu</span>
+        <h2 class="text-3xl md:text-5xl font-black text-white mt-2 mb-3" data-i18n="menu-title">What We’re Serving</h2>
+        <p class="text-zinc-400 max-w-lg mx-auto" data-i18n="menu-sub">Freshly made, boldly flavored. Pick your fix.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Menu categories">
+        <button type="button" class="menu-tab active px-5 py-2.5 rounded-full border border-zinc-700 text-sm font-bold text-zinc-300" data-cat="all" role="tab" aria-selected="true" data-i18n="cat-all">All</button>
+        <button type="button" class="menu-tab px-5 py-2.5 rounded-full border border-zinc-700 text-sm font-bold text-zinc-300" data-cat="sandwiches" role="tab" aria-selected="false" data-i18n="cat-sand">Sandwiches</button>
+        <button type="button" class="menu-tab px-5 py-2.5 rounded-full border border-zinc-700 text-sm font-bold text-zinc-300" data-cat="burgers" role="tab" aria-selected="false" data-i18n="cat-burg">Burgers</button>
+        <button type="button" class="menu-tab px-5 py-2.5 rounded-full border border-zinc-700 text-sm font-bold text-zinc-300" data-cat="wraps" role="tab" aria-selected="false" data-i18n="cat-wrap">Wraps</button>
+        <button type="button" class="menu-tab px-5 py-2.5 rounded-full border border-zinc-700 text-sm font-bold text-zinc-300" data-cat="sides" role="tab" aria-selected="false" data-i18n="cat-sides">Sides & Drinks</button>
+      </div>
+
+      <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div>
+          <span class="text-brand-500 font-bold text-sm tracking-wider uppercase flex items-center gap-2 mb-3">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/></svg>
+            <span data-i18n="about-tag">Welcome to SandWix</span>
+          </span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-5" data-i18n="about-title">
+            Where Every Bite Fixes Your Mood
+          </h2>
+          <p class="text-zinc-400 leading-relaxed mb-4 text-base md:text-lg font-light" data-i18n="about-desc1">
+            SandWix is more than just a sandwich shop — it’s an experience built on fresh ingredients, bold house-made sauces, and artisan breads baked to golden perfection.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-8 text-base md:text-lg font-light" data-i18n="about-desc2">
+            Located conveniently in Al Khobar, we serve high-energy vibes and unforgettable flavor combinations that keep our community coming back.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <div class="flex items-center gap-2.5 bg-surface-50 px-4 py-2.5 rounded-2xl border border-zinc-800">
+              <span class="text-brand-500 text-lg">✓</span>
+              <span class="font-bold text-sm text-zinc-200" data-i18n="feat-1">100% Fresh Ingredients</span>
             </div>
-
-            <div class="container mx-auto px-4 text-center relative z-10 max-w-4xl">
-                <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-400 border border-orange-500/25 px-5 py-2.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase shadow-lg shadow-orange-500/8 badge-live">
-                    <span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span>
-                    <span data-lang-key="hero-badge">Khobar's Favorite Spot</span>
-                </span>
-                <h2 class="text-4xl sm:text-6xl lg:text-7xl font-black mb-6 tracking-tight leading-[1.05]">
-                    Mix Food <span class="text-orange-500 drop-shadow-[0_0_30px_rgba(255,102,0,0.5)]">Fix Mood</span>
-                </h2>
-                <p class="text-base sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
-                   data-lang-key="hero-sub">
-                    Crafting mouth-watering gourmet sandwiches, smashed burgers, and signature wraps with passion right here in Al Khobar.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <!-- PRIMARY: Order Now on WhatsApp -->
-                    <a href="https://wa.me/966500000000?text=Hello%20SandWix!%20I%20want%20to%20order."
-                       class="bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-2xl text-base md:text-lg transition-all shadow-xl shadow-green-500/30 hover:shadow-green-500/50 inline-flex items-center gap-3 group cursor-pointer pulse-whatsapp">
-                        <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
-                        <span data-lang-key="btn-order-now">Order Now</span>
-                    </a>
-                    <!-- SECONDARY: View Menu -->
-                    <a href="#menu"
-                       class="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700 hover:border-orange-500/50 text-white font-bold px-8 py-4 rounded-2xl text-base md:text-lg transition-all inline-flex items-center gap-3 backdrop-blur-sm">
-                        <i class="fas fa-utensils text-orange-500"></i>
-                        <span data-lang-key="btn-menu">View Menu</span>
-                    </a>
-                </div>
+            <div class="flex items-center gap-2.5 bg-surface-50 px-4 py-2.5 rounded-2xl border border-zinc-800">
+              <span class="text-brand-500 text-lg">✓</span>
+              <span class="font-bold text-sm text-zinc-200" data-i18n="feat-2">Signature Sauces</span>
             </div>
-        </section>
-
-        <!-- STATS SECTION -->
-        <section class="bg-[#111] border-y border-zinc-800/60 py-7 relative z-20">
-            <div class="container mx-auto px-4 max-w-5xl">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" id="stats-grid">
-                    <div class="p-4">
-                        <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">50+</div>
-                        <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-items">Menu Items</p>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">4.7</div>
-                        <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-rating">Google Rating</p>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">2K+</div>
-                        <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-customers">Happy Customers</p>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl md:text-4xl font-black text-orange-500 mb-1">24/7</div>
-                        <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold" data-lang-key="stat-service">Fast Service</p>
-                    </div>
-                </div>
+            <div class="flex items-center gap-2.5 bg-surface-50 px-4 py-2.5 rounded-2xl border border-zinc-800">
+              <span class="text-brand-500 text-lg">✓</span>
+              <span class="font-bold text-sm text-zinc-200" data-i18n="feat-3">Fast Delivery</span>
             </div>
-        </section>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="rounded-3xl overflow-hidden border-2 border-brand-500/20 shadow-2xl aspect-[4/3] bg-surface-100 relative">
+            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80"
+                 alt="Gourmet sandwich at SandWix"
+                 class="w-full h-full object-cover"
+                 loading="lazy"
+                 width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- ABOUT SECTION -->
-        <section class="py-20 md:py-32 bg-[#0a0a0a] relative" id="about">
-            <div class="container mx-auto px-4 max-w-6xl">
-                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    <div>
-                        <span class="text-orange-500 font-bold tracking-wider text-sm uppercase block mb-3 flex items-center gap-2">
-                            <i class="fas fa-fire"></i> <span data-lang-key="about-tag">Welcome to SandWix</span>
-                        </span>
-                        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight" data-lang-key="about-title">
-                            Where Every Bite Fixes Your Mood
-                        </h2>
-                        <p class="text-zinc-400 leading-relaxed mb-6 text-base md:text-lg font-light" data-lang-key="about-desc1">
-                            SandWix is more than just a sandwich shop — it's an experience built on fresh ingredients, bold house-made sauces, and artisan breads baked to golden perfection.
-                        </p>
-                        <p class="text-zinc-400 leading-relaxed mb-8 text-base md:text-lg font-light" data-lang-key="about-desc2">
-                            Located conveniently in Al Khobar, we serve up high-energy vibes and unforgettable flavor combinations that keep our community coming back for more.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <div class="flex items-center gap-3 bg-[#141414] px-5 py-3 rounded-2xl border border-zinc-800">
-                                <i class="fas fa-check-circle text-orange-500 text-lg"></i>
-                                <span class="font-bold text-sm text-zinc-200" data-lang-key="feat-1">100% Fresh Ingredients</span>
-                            </div>
-                            <div class="flex items-center gap-3 bg-[#141414] px-5 py-3 rounded-2xl border border-zinc-800">
-                                <i class="fas fa-check-circle text-orange-500 text-lg"></i>
-                                <span class="font-bold text-sm text-zinc-200" data-lang-key="feat-2">Signature Sauces</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-orange-500/20 aspect-[4/3] relative group shimmer-border">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none"></div>
-                            <img src="https://images.unsplash.com/photo-1528735602780-2
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <span class="text-brand-500 font-bold text-sm tracking-wider uppercase" data-i18n="gal-tag">Gallery</span>
+        <h2 class="text-3xl md:text-4xl font-black text-white mt-2" data-i18n="gal-title">Taste the Vibe</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div class="rounded-2xl overflow-hidden aspect-square border border-zinc-800">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&q=80" alt="Burger" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square border border-zinc-800">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" alt="Burger close-up" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square border border-zinc-800">
+          <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500&q=80" alt="Fries" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square border border-zinc-800">
+          <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?w=500&q=80" alt="Sandwich" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-6xl mx-auto"></div>
+
+  <!-- FIND US -->
+  <section id="findus" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <span class="text-brand-500 font-bold text-sm tracking-wider uppercase" data-i18n="find-tag">Location</span>
+        <h2 class="text-3xl md:text-4xl font-black text-white mt-2" data-i18n="find-title">Find Us in Al Khobar</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="bg-surface-50 rounded-3xl border border-zinc-800 p-6 md:p-8 space-y-5">
+          <div class="flex gap-4">
+            <div class="w-11 h-11 rounded-xl bg-brand-500/15 flex items-center justify-center text-brand-500 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-white" data-i18n="addr-label">Address</div>
+              <div class="text-zinc-400 text-sm mt-1" data-i18n="addr-value">Al Khobar, Eastern Province, Saudi Arabia</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-11 h-11 rounded-xl bg-brand-500/15 flex items-center justify-center text-brand-500 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-white" data-i18n="hours-label">Hours</div>
+              <div class="text-zinc-400 text-sm mt-1" data-i18n="hours-value">Open daily · 11:00 AM – 2:00 AM</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-11 h-11 rounded-xl bg-brand-500/15 flex items-center justify-center text-brand-500 shrink-0">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div>
+              <div class="font-bold text-white" data-i18n="order-label">Order</div>
+              <div class="text-zinc-400 text-sm mt-1" data-i18n="order-value">WhatsApp · Fast pickup & delivery</div>
+            </div>
+          </div>
+          <a href="https://wa.me/966500000000?text=Hello%20SandWix!"
+             target="_blank" rel="noopener"
+             class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 rounded-2xl transition">
+            <span data-i18n="cta-order">Order Now</span>
+          </a>
+        </div>
+        <div class="rounded-3xl overflow-hidden border border-zinc-800 bg-surface-100 aspect-[4/3] md:aspect-auto md:min-h-[320px] flex items-center justify-center text-zinc-600">
+          <div class="text-center p-6">
+            <svg class="w-12 h-12 mx-auto mb-3 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <p class="text-sm" data-i18n="map-placeholder">Map coming soon · Al Khobar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-zinc-800/80 py-10 mt-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-black text-sm">S</div>
+        <div>
+          <div class="font-black text-white">Sand<span class="text-brand-500">Wix</span></div>
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider" data-i18n="tagline">Mix Food Fix Mood</div>
+        </div>
+      </div>
+      <p class="text-zinc-500 text-sm text-center" data-i18n="footer-copy">
+        © 2026 SandWix · Al Khobar. All rights reserved.
+      </p>
+      <div class="flex gap-3">
+        <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-surface-50 border border-zinc-700 flex items-center justify-center text-[#25d366] hover:border-[#25d366] transition" aria-label="WhatsApp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      en: {
+        tagline: "Mix Food Fix Mood",
+        "nav-menu": "Menu", "nav-about": "About", "nav-gallery": "Gallery", "nav-find": "Find Us", "nav-order": "Order Now",
+        "hero-badge": "Khobar’s Favorite Spot",
+        "hero-title-1": "Mix Food", "hero-title-2": "Fix Mood",
+        "hero-sub": "Crafting mouth-watering gourmet sandwiches, smashed burgers, and signature wraps with passion right here in Al Khobar.",
+        "cta-order": "Order Now", "cta-menu": "View Menu",
+        "stat-menu": "Menu Items", "stat-rating": "Google Rating", "stat-customers": "Happy Customers", "stat-service": "Fast Service",
+        "menu-tag": "Our Menu", "menu-title": "What We’re Serving", "menu-sub": "Freshly made, boldly flavored. Pick your fix.",
+        "cat-all": "All", "cat-sand": "Sandwiches", "cat-burg": "Burgers", "cat-wrap": "Wraps", "cat-sides": "Sides & Drinks",
+        "about-tag": "Welcome to SandWix", "about-title": "Where Every Bite Fixes Your Mood",
+        "about-desc1": "SandWix is more than just a sandwich shop — it’s an experience built on fresh ingredients, bold house-made sauces, and artisan breads baked to golden perfection.",
+        "about-desc2": "Located conveniently in Al Khobar, we serve high-energy vibes and unforgettable flavor combinations that keep our community coming back.",
+        "feat-1": "100% Fresh Ingredients", "feat-2": "Signature Sauces", "feat-3": "Fast Delivery",
+        "gal-tag": "Gallery", "gal-title": "Taste the Vibe",
+        "find-tag": "Location", "find-title": "Find Us in Al Khobar",
+        "addr-label": "Address", "addr-value": "Al Khobar, Eastern Province, Saudi Arabia",
+        "hours-label": "Hours", "hours-value": "Open daily · 11:00 AM – 2:00 AM",
+        "order-label": "Order", "order-value": "WhatsApp · Fast pickup & delivery",
+        "map-placeholder": "Map coming soon · Al Khobar",
+        "footer-copy": "© 2026 SandWix · Al Khobar. All rights reserved.",
+        "item-order": "Order"
+      },
+      ar: {
+        tagline: "مزيج طعام · إصلاح مزاج",
+        "nav-menu": "القائمة", "nav-about": "من نحن", "nav-gallery": "المعرض", "nav-find": "موقعنا", "nav-order": "اطلب الآن",
+        "hero-badge": "المكان المفضل في الخبر",
+        "hero-title-1": "مزيج طعام", "hero-title-2": "إصلاح مزاج",
+        "hero-sub": "نصنع ساندويتشات فاخرة وبرجر مهروس ولفائف مميزة بشغف هنا في الخبر.",
+        "cta-order": "اطلب الآن", "cta-menu": "عرض القائمة",
+        "stat-menu": "أصناف القائمة", "stat-rating": "تقييم جوجل", "stat-customers": "عملاء سعداء", "stat-service": "خدمة سريعة",
+        "menu-tag": "قائمتنا", "menu-title": "ماذا نقدم", "menu-sub": "طازج وجريء في النكهة. اختر ما يناسبك.",
+        "cat-all": "الكل", "cat-sand": "ساندويتشات", "cat-burg": "برجر", "cat-wrap": "لفائف", "cat-sides": "جانبية ومشروبات",
+        "about-tag": "مرحباً بكم في ساندوکس", "about-title": "حيث كل قضمة تصلح مزاجك",
+        "about-desc1": "ساندوکس أكثر من مجرد محل ساندويتش — تجربة مبنية على مكونات طازجة وصلصات منزلية جريئة وخبز حرفي.",
+        "about-desc2": "نقع في موقع مريح في الخبر، ونقدم أجواء مليئة بالطاقة ونكهات لا تُنسى تجعل مجتمعنا يعود مرة بعد مرة.",
+        "feat-1": "مكونات طازجة 100%", "feat-2": "صلصات مميزة", "feat-3": "توصيل سريع",
+        "gal-tag": "المعرض", "gal-title": "تذوق الأجواء",
+        "find-tag": "الموقع", "find-title": "تجدنا في الخبر",
+        "addr-label": "العنوان", "addr-value": "الخبر، المنطقة الشرقية، المملكة العربية السعودية",
+        "hours-label": "ساعات العمل", "hours-value": "يومياً · 11:00 ص – 2:00 ص",
+        "order-label": "الطلب", "order-value": "واتساب · استلام وتوصيل سريع",
+        "map-placeholder": "الخريطة قريباً · الخبر",
+        "footer-copy": "© 2026 ساندوکس · الخبر. جميع الحقوق محفوظة.",
+        "item-order": "اطلب"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const dict = i18n[lang];
+      document.documentElement.lang = lang;
+      document.body.classList.remove('lang-en', 'lang-ar');
+      document.body.classList.add(lang === 'ar' ? 'lang-ar' : 'lang-en');
+      document.getElementById('lang-label').textContent = lang === 'en' ? 'عربي' : 'EN';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      renderMenu();
+    }
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      setLang(currentLang === 'en' ? 'ar' : 'en');
+    });
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const open = !mobileMenu.classList.contains('hidden-menu');
+      if (open) {
+        mobileMenu.classList.add('hidden-menu');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        mobileMenu.classList.remove('hidden-menu');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden-menu');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const menuItems = [
+      { id: 1, cat: 'sandwiches', name: { en: 'Classic Club', ar: 'كلوب كلاسيك' }, desc: { en: 'Turkey, beef bacon, egg, lettuce, tomato, house mayo', ar: 'دجاج رومي، بيكون لحم، بيض، خس، طماطم، مايونيز منزلي' }, price: '28', emoji: '🥪' },
+      { id: 2, cat: 'sandwiches', name: { en: 'Spicy Chicken Melt', ar: 'دجاج حار ذائب' }, desc: { en: 'Crispy chicken, spicy sauce, melted cheddar, pickles', ar: 'دجاج مقرمش، صلصة حارة، شيدر ذائب، مخلل' }, price: '26', emoji: '🌶️' },
+      { id: 3, cat: 'burgers', name: { en: 'Smashed Double', ar: 'سماشد دبل' }, desc: { en: 'Two smashed patties, American cheese, special sauce', ar: 'قطعتان مهروستان، جبن أمريكي، صلصة خاصة' }, price: '32', emoji: '🍔' },
+      { id: 4, cat: 'burgers', name: { en: 'Wix Smash', ar: 'ويكس سماش' }, desc: { en: 'Single smash, caramelized onion, pickles, Wix sauce', ar: 'سماش واحد، بصل مكرمل، مخلل، صلصة ویکس' }, price: '24', emoji: '🔥' },
+      { id: 5, cat: 'wraps', name: { en: 'Crispy Wrap', ar: 'لفافة مقرمشة' }, desc: { en: 'Crispy chicken strips, lettuce, ranch, tortilla', ar: 'شرائح دجاج مقرمشة، خس، رانش، خبز تورتيلا' }, price: '22', emoji: '🌯' },
+      { id: 6, cat: 'wraps', name: { en: 'Falafel Power', ar: 'فلافل باور' }, desc: { en: 'House falafel, tahini, salad, pickles', ar: 'فلافل منزلي، طحينة، سلطة، مخلل' }, price: '18', emoji: '🥙' },
+      { id: 7, cat: 'sides', name: { en: 'Loaded Fries', ar: 'بطاطس محملة' }, desc: { en: 'Crispy fries, cheese sauce, jalapeños', ar: 'بطاطس مقرمشة، صلصة جبن، هالابينو' }, price: '15', emoji: '🍟' },
+      { id: 8, cat: 'sides', name: { en: 'Fresh Juice', ar: 'عصير طازج' }, desc: { en: 'Orange / Mango / Mixed — daily fresh', ar: 'برتقال / مانجو / مشكل — طازج يومياً' }, price: '12', emoji: '🧃' },
+      { id: 9, cat: 'sandwiches', name: { en: 'Philly Style', ar: 'على طريقة فيلي' }, desc: { en: 'Sliced beef, peppers, onions, provolone', ar: 'لحم مقطع، فلفل، بصل، بروvolone' }, price: '30', emoji: '🥩' },
+    ];
+
+    let activeCat = 'all';
+
+    function renderMenu() {
+      const grid = document.getElementById('menu-grid');
+      const filtered = activeCat === 'all' ? menuItems : menuItems.filter(i => i.cat === activeCat);
+      const orderLabel = i18n[currentLang]['item-order'] || 'Order';
+
+      grid.innerHTML = filtered.map(item => `
+        <article class="card-lift bg-surface-50 border border-zinc-800 rounded-2xl p-5 flex flex-col" data-cat="${item.cat}">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="text-3xl" aria-hidden="true">${item.emoji}</span>
+            <span class="text-brand-500 font-black text-lg">${item.price} <span class="text-xs font-medium text-zinc-500">SAR</span></span>
+          </div>
+          <h3 class="font-bold text-white text-lg mb-1">${item.name[currentLang]}</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed flex-1 mb-4">${item.desc[currentLang]}</p>
+          <a href="https://wa.me/966500000000?text=${encodeURIComponent('I want to order: ' + item.name.en + ' (' + item.price + ' SAR)')}"
+             target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-brand-500/40 text-brand-400 hover:bg-brand-500 hover:text-white font-bold text-sm transition">
+            ${orderLabel}
+          </a>
+        </article>
+      `).join('');
+    }
+
+    document.querySelectorAll('.menu-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.menu-tab').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        activeCat = btn.dataset.cat;
+        renderMenu();
+      });
+    });
+
+    renderMenu();
+  </script>
+</body>
+</html>
